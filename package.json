@@ -2,21 +2,32 @@
   "name": "todo-app-nextjs",
   "version": "0.1.0",
   "private": true,
+  "description": "Todo App built with NextJS, ChakraUI and TypeScript ",
+  "engines": {
+    "npm": ">=9.0.0 <10.0.0",
+    "node": ">=18.0.0 <19.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "compile": "tsc",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@types/node": "18.16.1",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.1",
-    "eslint": "8.39.0",
-    "eslint-config-next": "13.3.1",
     "next": "13.3.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "eslint": "8.39.0",
+    "eslint-config-next": "13.3.1",
+    "husky": "^8.0.3",
+    "prettier": "^2.8.8",
     "typescript": "5.0.4"
   }
 }
