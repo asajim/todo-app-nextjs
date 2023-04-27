@@ -17,6 +17,7 @@ import {
   EditTodoRequest,
   TodoItemModel,
 } from '@/domain/model/todo';
+import { sortDescendingByStringField } from '@/uti/sort';
 
 export interface TodoState {
   todoItems: TodoItemModel[];
@@ -73,9 +74,7 @@ export const todoItemSlice = createSlice({
       state: Draft<TodoState>,
       action: PayloadAction<TodoItemModel[]>,
     ) => {
-      state.todoItems = action.payload.sort((a, b) =>
-        b.modified.localeCompare(a.modified),
-      );
+      state.todoItems = sortDescendingByStringField(action.payload, 'modified');
     },
     addTodoItem: (
       state: Draft<TodoState>,
@@ -86,8 +85,9 @@ export const todoItemSlice = createSlice({
         (value) => value.id === newItem.id,
       );
       if (index === -1) {
-        state.todoItems = [...state.todoItems, newItem].sort((a, b) =>
-          b.modified.localeCompare(a.modified),
+        state.todoItems = sortDescendingByStringField(
+          [...state.todoItems, newItem],
+          'modified',
         );
       } else {
         state.todoItems[index] = newItem;
@@ -100,8 +100,9 @@ export const todoItemSlice = createSlice({
         state.addTodoItemRequest = {
           status: RequestStatus.FULFILLED,
         };
-        state.todoItems = [...state.todoItems, action.payload].sort((a, b) =>
-          b.modified.localeCompare(a.modified),
+        state.todoItems = sortDescendingByStringField(
+          [...state.todoItems, action.payload],
+          'modified',
         );
       })
       .addCase(addTodoItemAsync.pending, (state) => {

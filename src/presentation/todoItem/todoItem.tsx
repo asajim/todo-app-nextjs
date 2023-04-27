@@ -10,6 +10,11 @@ interface Props {
 
 export const TodoItem = memo(({ todoItem }: Props) => {
   const router = useRouter();
+  const currentDate = new Date();
+  const hasPassedDeadline = todoItem.deadline
+    ? new Date(todoItem.deadline).getMilliseconds() <
+      currentDate.getMilliseconds()
+    : false;
 
   return (
     <Flex
@@ -24,7 +29,7 @@ export const TodoItem = memo(({ todoItem }: Props) => {
         event.preventDefault();
         router.push(Routes.todoDetail(todoItem.id));
       }}
-      bg={todoItem.isDone ? 'green.50' : 'white'}
+      bg={hasPassedDeadline ? 'red.50' : todoItem.isDone ? 'green.50' : 'white'}
     >
       <Text>Id: {todoItem.id}</Text>
       <Text>Title: {todoItem.title}</Text>

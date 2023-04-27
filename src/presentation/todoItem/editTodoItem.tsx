@@ -40,7 +40,7 @@ export const EditTodoItem = memo(({ item, ...rest }: Props) => {
       editTodoItemAsync({
         id: item.id.toString(),
         title: title.trim(),
-        deadline: deadline,
+        deadline: deadline.trim() || null,
         isDone: isDone,
       }),
     );

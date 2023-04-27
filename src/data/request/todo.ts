@@ -25,9 +25,9 @@ export async function createNewTodoItem(
 
 export async function updateTodoItem(
   id: string,
-  title: string | undefined,
-  deadline: string | undefined,
-  isDone: boolean | undefined,
+  title: string,
+  deadline: string | null,
+  isDone: boolean,
 ): Promise<TodoItemDto> {
   const result = await axiosInstance.put(apiEndpoints.todoItem(id), {
     title,

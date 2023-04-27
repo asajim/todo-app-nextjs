@@ -12,7 +12,9 @@ export interface AddTodoRequest {
   deadline: string | undefined;
 }
 
-export interface EditTodoRequest extends AddTodoRequest {
+export interface EditTodoRequest {
   id: string;
-  isDone: boolean | undefined;
+  title: string;
+  deadline: string | null;
+  isDone: boolean;
 }
