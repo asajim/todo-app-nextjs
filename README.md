@@ -21,6 +21,7 @@ All endpoints are retrieved from [this backend project](https://github.com/asaji
    $ npm run start:dev
    ```
 5. Open [backend project](https://github.com/asajim/todo-app-nestjs) and start development server there
+6. Open your browser and navigate to `http://localhost:3000`.
 
 ## Techstack
 
