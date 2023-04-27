@@ -1,5 +1,12 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
-import { Button, Flex, Input, Text, useToast } from '@chakra-ui/react';
+import {
+  Button,
+  Flex,
+  FlexProps,
+  Input,
+  Text,
+  useToast,
+} from '@chakra-ui/react';
 import { useAppDispatch, useAppSelector } from '@/domain/redux/dispatch';
 import {
   addTodoItemAsync,
@@ -9,7 +16,7 @@ import {
 import { useDebounce } from 'use-debounce';
 import { RequestStatus } from '@/domain/model/request';
 
-export const AddTodoItem = memo(() => {
+export const AddTodoItem = memo((props: FlexProps) => {
   const toast = useToast();
 
   // States
@@ -68,6 +75,7 @@ export const AddTodoItem = memo(() => {
       borderWidth={'1px'}
       borderColor={'gray.500'}
       p={'2'}
+      {...props}
     >
       <Text>Title (required)</Text>
       <Input
@@ -96,7 +104,7 @@ export const AddTodoItem = memo(() => {
         isLoading={addTodoItemRequestDebounced.status === RequestStatus.PENDING}
         isDisabled={!title.trim().length}
       >
-        Add new todo-item
+        Add new to-do-item
       </Button>
     </Flex>
   );

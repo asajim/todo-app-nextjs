@@ -16,9 +16,9 @@ export const TodoOverviewPage = memo(({ todoItems }: Props) => {
       maxW={'container.xl'}
       marginX={'auto'}
     >
-      <Heading>Welcome at TODOs App</Heading>
-      <AddTodoItem />
-      <TodoItems todoItems={todoItems} />
+      <Heading>Welcome at To-do App</Heading>
+      <AddTodoItem mt={'5'} />
+      <TodoItems todoItems={todoItems} mt={'8'} />
     </Flex>
   );
 });

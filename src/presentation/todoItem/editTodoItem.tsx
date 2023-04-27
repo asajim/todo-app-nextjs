@@ -124,7 +124,7 @@ export const EditTodoItem = memo(({ item, ...rest }: Props) => {
         }
         isDisabled={!title.trim().length}
       >
-        Edit todo-item
+        Edit to-do-item
       </Button>
     </Flex>
   );

@@ -73,7 +73,7 @@ export const RemoveTodoItem = memo(({ item, ...rest }: Props) => {
       variant={'outline'}
       {...rest}
     >
-      Remove todo-item
+      Remove to-do-item
     </Button>
   );
 });
