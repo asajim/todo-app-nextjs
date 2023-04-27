@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { Flex, Heading } from '@chakra-ui/react';
 import { TodoItemModel } from '@/domain/model/todo';
 import { TodoItems } from '@/presentation/todoItem/todoItems';
-import { AddTodoItem } from '@/presentation/addTodoItem';
+import { AddTodoItem } from '@/presentation/todoItem/addTodoItem';
 
 interface Props {
   todoItems: TodoItemModel[];

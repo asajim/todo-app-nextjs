@@ -24,6 +24,7 @@ export const TodoItem = memo(({ todoItem }: Props) => {
         event.preventDefault();
         router.push(Routes.todoDetail(todoItem.id));
       }}
+      bg={todoItem.isDone ? 'green.50' : 'white'}
     >
       <Text>Id: {todoItem.id}</Text>
       <Text>Title: {todoItem.title}</Text>

@@ -3,6 +3,8 @@ import { Flex, Heading, Text } from '@chakra-ui/react';
 import { useAppSelector } from '@/domain/redux/dispatch';
 import { getTodoState } from '@/domain/redux/slices/todo';
 import { useRouter } from 'next/router';
+import { EditTodoItem } from '@/presentation/todoItem/editTodoItem';
+import { RemoveTodoItem } from '@/presentation/todoItem/removeTodoItem';
 
 export const TodoDetailPage = memo(() => {
   const router = useRouter();
@@ -22,6 +24,9 @@ export const TodoDetailPage = memo(() => {
       <Text>Created: {todoItem.created}</Text>
       <Text>Deadline: {todoItem.deadline ?? '-'}</Text>
       <Text>Last modified: {todoItem.modified}</Text>
+
+      <EditTodoItem item={todoItem} mt={'2'} />
+      <RemoveTodoItem item={todoItem} mt={'2'} />
     </Flex>
   );
 });

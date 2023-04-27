@@ -11,3 +11,8 @@ export interface AddTodoRequest {
   title: string;
   deadline: string | undefined;
 }
+
+export interface EditTodoRequest extends AddTodoRequest {
+  id: string;
+  isDone: boolean | undefined;
+}

@@ -22,3 +22,22 @@ export async function createNewTodoItem(
   });
   return result.data;
 }
+
+export async function updateTodoItem(
+  id: string,
+  title: string | undefined,
+  deadline: string | undefined,
+  isDone: boolean | undefined,
+): Promise<TodoItemDto> {
+  const result = await axiosInstance.put(apiEndpoints.todoItem(id), {
+    title,
+    deadline,
+    isDone,
+  });
+  return result.data;
+}
+
+export async function deleteTodoItem(id: string): Promise<TodoItemDto> {
+  const result = await axiosInstance.delete(apiEndpoints.todoItem(id));
+  return result.data;
+}
