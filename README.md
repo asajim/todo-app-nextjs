@@ -3,6 +3,17 @@
 This is a simple todo backend app built with NextJS.
 All endpoints are retrieved from [this backend project](https://github.com/asajim/todo-app-nestjs)
 
+Project are structured as 3-layer-architecture: data, domain, presentation.
+
+* Data contains all logic for API requests and DTOs. It should not contain anything from domain or presentation layer.
+* Domain contains business logic, redux, and conversion of DTOs to app-models. It should only depend on some codes from
+  data layer but nothing from presentation layer.
+* Presentation contains all UI components. It should only depend on some codes from domain layer but nothing from data
+  layer.
+
+Three layer architecture are used to ensure that each layer should only be responsible for what they should do, and they
+should only access what they are supposed to access to.
+
 ## Features
 
 * There are two pages, `/` and `/[id]`.

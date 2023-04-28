@@ -17,7 +17,7 @@ import {
   EditTodoRequest,
   TodoItemModel,
 } from '@/domain/model/todo';
-import { sortDescendingByStringField } from '@/uti/sort';
+import { sortDescendingByStringField } from '@/util/sort';
 
 export interface TodoState {
   todoItems: TodoItemModel[];
