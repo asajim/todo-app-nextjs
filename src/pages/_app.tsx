@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import { theme } from '@/presentation/style/theme';
 import { wrapper } from '@/domain/redux/store';
 import { Provider } from 'react-redux';
+import 'react-datepicker/dist/react-datepicker.css';
 
 // Use Next Font for automatic font optimization
 // https://nextjs.org/docs/basic-features/font-optimization
@@ -22,4 +23,5 @@ function App({ Component, ...rest }: AppProps) {
     </main>
   );
 }
+
 export default App;

@@ -17,7 +17,6 @@ import {
 import { useDebounce } from 'use-debounce';
 import { RequestStatus } from '@/domain/model/request';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
 
 export const AddTodoItem = memo((props: FlexProps) => {

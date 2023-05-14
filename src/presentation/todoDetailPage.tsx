@@ -17,7 +17,21 @@ export const TodoDetailPage = memo(() => {
   }
 
   return (
-    <Flex direction={'column'} p={'4'} maxW={'container.xl'} marginX={'auto'}>
+    <Flex
+      minH={'100vh'}
+      h={'full'}
+      direction={'column'}
+      p={'4'}
+      maxW={'container.xl'}
+      marginX={'auto'}
+      bg={
+        todoItem.isDone
+          ? 'green.50'
+          : todoItem.hasPassedDeadline
+          ? 'red.50'
+          : 'white'
+      }
+    >
       <Heading>Title: {todoItem.title}</Heading>
       <Text>Id: {todoItem.id}</Text>
       <Text>{todoItem.isDone ? 'Done' : 'Not yet done'}</Text>
