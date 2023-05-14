@@ -18,6 +18,7 @@ export const TodoItem = memo(({ todoItem }: Props) => {
 
   return (
     <Flex
+      w={{ base: 'full', md: 'calc(50% - 8px)' }}
       direction={'column'}
       borderRadius={'md'}
       borderWidth={'1px'}
@@ -32,7 +33,9 @@ export const TodoItem = memo(({ todoItem }: Props) => {
       bg={hasPassedDeadline ? 'red.50' : todoItem.isDone ? 'green.50' : 'white'}
     >
       <Text>Id: {todoItem.id}</Text>
-      <Text>Title: {todoItem.title}</Text>
+      <Text whiteSpace={'nowrap'} textOverflow={'ellipsis'} overflow={'hidden'}>
+        Title: {todoItem.title}
+      </Text>
       <Text>{todoItem.isDone ? 'Done' : 'Not yet done'}</Text>
       <Text>Created: {todoItem.created}</Text>
       <Text>Deadline: {todoItem.deadline ?? '-'}</Text>

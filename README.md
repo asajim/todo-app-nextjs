@@ -33,11 +33,11 @@ should only access what they are supposed to access to.
 2. Use Node 18 (if you have nvm installed, you can do it by typing `nvm use 18`)
 3. Install the dependencies:
    ```
-   $ npm install
+   npm install
    ```
 4. Start the development server:
    ```
-   $ npm run start:dev
+   npm run dev
    ```
 5. Open [backend project](https://github.com/asajim/todo-app-nestjs) and start development server there
 6. Open your browser and navigate to `http://localhost:3000`.

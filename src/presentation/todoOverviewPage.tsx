@@ -15,6 +15,7 @@ export const TodoOverviewPage = memo(({ todoItems }: Props) => {
       direction={'column'}
       maxW={'container.xl'}
       marginX={'auto'}
+      p={'4'}
     >
       <Heading>Welcome at To-do App</Heading>
       <AddTodoItem mt={'5'} />
