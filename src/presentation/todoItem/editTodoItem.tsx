@@ -1,5 +1,6 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import {
+  Box,
   Button,
   Checkbox,
   Flex,
@@ -17,6 +18,8 @@ import {
 import { useDebounce } from 'use-debounce';
 import { RequestStatus } from '@/domain/model/request';
 import { TodoItemModel } from '@/domain/model/todo';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
 
 interface Props extends FlexProps {
   item: TodoItemModel;
@@ -32,7 +35,9 @@ export const EditTodoItem = memo(({ item, ...rest }: Props) => {
 
   // States
   const [title, setTitle] = useState(item.title);
-  const [deadline, setDeadline] = useState(item.deadline ?? '');
+  const [deadline, setDeadline] = useState<Date | null>(
+    item.deadline ? new Date(item.deadline) : null,
+  );
   const [isDone, setIsDone] = useState<boolean>(item.isDone);
 
   const editTodo = useCallback(() => {
@@ -40,7 +45,7 @@ export const EditTodoItem = memo(({ item, ...rest }: Props) => {
       editTodoItemAsync({
         id: item.id.toString(),
         title: title.trim(),
-        deadline: deadline.trim() || null,
+        deadline: deadline ? moment(deadline).format('YYYY-MM-DD') : null,
         isDone: isDone,
       }),
     );
@@ -95,13 +100,28 @@ export const EditTodoItem = memo(({ item, ...rest }: Props) => {
       />
 
       <Text>Deadline (optional)</Text>
-      <Input
-        value={deadline}
-        onChange={(event) => {
-          event.preventDefault();
-          setDeadline(event.target.value);
+      <Box
+        css={{
+          '.react-datepicker__input-container': {
+            border: '1px black solid',
+            height: '40px',
+            borderRadius: '8px',
+          },
+          input: {
+            width: '100%',
+            height: '38px',
+            backgroundColor: 'transparent',
+            borderRadius: '8px',
+            paddingLeft: '16px',
+          },
         }}
-      />
+        w={'full'}
+      >
+        <DatePicker
+          selected={deadline}
+          onChange={(date) => setDeadline(date)}
+        />
+      </Box>
 
       <Flex gap={'4'}>
         <Text>Is done</Text>

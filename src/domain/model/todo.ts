@@ -5,6 +5,7 @@ export interface TodoItemModel {
   isDone: boolean;
   modified: string;
   created: string;
+  hasPassedDeadline: boolean;
 }
 
 export interface AddTodoRequest {

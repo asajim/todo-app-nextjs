@@ -1,5 +1,6 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import {
+  Box,
   Button,
   Flex,
   FlexProps,
@@ -15,13 +16,15 @@ import {
 } from '@/domain/redux/slices/todo';
 import { useDebounce } from 'use-debounce';
 import { RequestStatus } from '@/domain/model/request';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
 
 export const AddTodoItem = memo((props: FlexProps) => {
   const toast = useToast();
 
   // States
   const [title, setTitle] = useState('');
-  const [deadline, setDeadline] = useState('');
+  const [deadline, setDeadline] = useState<Date | null>();
 
   // Redux
   const dispatch = useAppDispatch();
@@ -32,7 +35,7 @@ export const AddTodoItem = memo((props: FlexProps) => {
     dispatch(
       addTodoItemAsync({
         title: title.trim(),
-        deadline: deadline || undefined,
+        deadline: deadline ? moment(deadline).format('YYYY-MM-DD') : undefined,
       }),
     );
   }, [dispatch, title, deadline]);
@@ -46,7 +49,7 @@ export const AddTodoItem = memo((props: FlexProps) => {
       case RequestStatus.FULFILLED:
         dispatch(resetAddTodoRequest());
         setTitle('');
-        setDeadline('');
+        setDeadline(null);
         toast({
           title: 'Success',
           description: 'Todo item is created.',
@@ -88,13 +91,28 @@ export const AddTodoItem = memo((props: FlexProps) => {
       />
 
       <Text>Deadline (optional)</Text>
-      <Input
-        value={deadline}
-        onChange={(event) => {
-          event.preventDefault();
-          setDeadline(event.target.value);
+      <Box
+        css={{
+          '.react-datepicker__input-container': {
+            border: '1px black solid',
+            height: '40px',
+            borderRadius: '8px',
+          },
+          input: {
+            width: '100%',
+            height: '38px',
+            backgroundColor: 'transparent',
+            borderRadius: '8px',
+            paddingLeft: '16px',
+          },
         }}
-      />
+        w={'full'}
+      >
+        <DatePicker
+          selected={deadline}
+          onChange={(date) => setDeadline(date)}
+        />
+      </Box>
 
       <Button
         onClick={(event) => {

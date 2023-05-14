@@ -9,7 +9,13 @@ interface Props extends FlexProps {
 
 export const TodoItems = memo(({ todoItems, ...rest }: Props) => {
   return (
-    <Flex w={'full'} direction={'column'} gap={'4'} {...rest}>
+    <Flex
+      w={'full'}
+      gap={'4'}
+      flexWrap={'wrap'}
+      justify={'space-between'}
+      {...rest}
+    >
       {todoItems.map((value) => {
         return <TodoItem todoItem={value} key={value.id} />;
       })}

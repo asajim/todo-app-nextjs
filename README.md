@@ -33,11 +33,11 @@ should only access what they are supposed to access to.
 2. Use Node 18 (if you have nvm installed, you can do it by typing `nvm use 18`)
 3. Install the dependencies:
    ```
-   $ npm install
+   npm install
    ```
 4. Start the development server:
    ```
-   $ npm run start:dev
+   npm run dev
    ```
 5. Open [backend project](https://github.com/asajim/todo-app-nestjs) and start development server there
 6. Open your browser and navigate to `http://localhost:3000`.
@@ -54,8 +54,6 @@ should only access what they are supposed to access to.
 
 * Add testing
 * Improve UI design
-* To set deadline, user need to type manually. Ideally, this should be a date picker and should only allow valid date to
-  be entered.
 * Currently, authentication is implemented using username and password variables which defined in env. Ideally this
   should be based on user input, so the app could only be accessed by know person.
 * If there's an error during getServerSideProps, user will be redirected to 404 page. Ideally 404 page should only be

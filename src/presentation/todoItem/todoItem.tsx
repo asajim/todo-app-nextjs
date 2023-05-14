@@ -10,14 +10,10 @@ interface Props {
 
 export const TodoItem = memo(({ todoItem }: Props) => {
   const router = useRouter();
-  const currentDate = new Date();
-  const hasPassedDeadline = todoItem.deadline
-    ? new Date(todoItem.deadline).getMilliseconds() <
-      currentDate.getMilliseconds()
-    : false;
 
   return (
     <Flex
+      w={{ base: 'full', md: 'calc(50% - 8px)' }}
       direction={'column'}
       borderRadius={'md'}
       borderWidth={'1px'}
@@ -29,10 +25,18 @@ export const TodoItem = memo(({ todoItem }: Props) => {
         event.preventDefault();
         router.push(Routes.todoDetail(todoItem.id));
       }}
-      bg={hasPassedDeadline ? 'red.50' : todoItem.isDone ? 'green.50' : 'white'}
+      bg={
+        todoItem.isDone
+          ? 'green.50'
+          : todoItem.hasPassedDeadline
+          ? 'red.50'
+          : 'white'
+      }
     >
       <Text>Id: {todoItem.id}</Text>
-      <Text>Title: {todoItem.title}</Text>
+      <Text whiteSpace={'nowrap'} textOverflow={'ellipsis'} overflow={'hidden'}>
+        Title: {todoItem.title}
+      </Text>
       <Text>{todoItem.isDone ? 'Done' : 'Not yet done'}</Text>
       <Text>Created: {todoItem.created}</Text>
       <Text>Deadline: {todoItem.deadline ?? '-'}</Text>
